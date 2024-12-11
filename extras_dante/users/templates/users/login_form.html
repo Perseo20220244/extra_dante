@@ -1,0 +1,25 @@
+{% extends 'users/base.html' %} 
+{% load widget_tweaks %}
+{% block title %}Login{% endblock %} 
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="container rounded p-4 w-25 shadow-lg bg-white opacity-80">
+        <h2 class="text-center mb-4">Inicia Sesión</h2>
+    
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="id_username" class="form-label">Nombre de Usuario</label>
+              {{ login_form.username|add_class:"form-control" }}
+            </div>
+            <div class="mb-3">
+              <label for="id_password" class="form-label">Contraseña</label>
+              {{ login_form.password|add_class:"form-control" }}
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+          </form>
+          
+        <p class="text-center mt-3">¿No tienes una cuenta? <a href="{% url 'register' %}">Regístrate aquí</a></p>
+    </div>
+</div>
+{% endblock %}

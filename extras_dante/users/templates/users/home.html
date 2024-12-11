@@ -1,0 +1,40 @@
+{% extends 'users/base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        
+        <!-- Logo vacío -->
+        <div class="navbar-brand">
+            <img src="{% static 'users/img/logo_utem.png' %}" alt="Logo" style="height: 80px;">
+        </div>
+        <!-- Título centrado -->
+        <h1 class="navbar-text text-center text-white mx-auto text-uppercase fs-1" style="font-size: 1.5rem;">
+            Seguridad informática y UX/UI
+        </h1>
+
+        <!-- Icono para cerrar sesión -->
+        <a class="navbar-brand d-flex align-items-center" href="{% url 'logout' %}" data-bs-toggle="tooltip" title="Cerrar Sesión">
+            <i class="bi bi-box-arrow-left" style="font-size: 2em; color: white;"></i>
+        </a>
+
+        <!-- Icono para ir al admin -->
+        <a class="navbar-text d-flex align-items-center" href="{% url 'admin:login' %}" data-bs-toggle="tooltip" title="Administrar">
+            <i class="bi bi-person-fill-gear px-2" style="font-size: 2.5em; color: white;"></i>
+        </a>
+    </div>
+</nav>
+
+<!-- Contenedor para centrar los mensajes -->
+<div class="d-flex flex-column justify-content-center align-items-center vh-100">
+    <div class="p-4 text-center" style="background-color: rgba(255, 255, 255, 0.8); border-radius: 15px; display: inline-block;">
+        <h2 class="text-dark my-3 fs-2">Bienvenido</h2>
+
+        <!-- Mensaje de Bienvenida (ocultado al inicio) -->
+        <p class="text-dark my-4 fs-4" id="welcome-message" style="display:none;">¡Bien hecho! Has superado el ataque! <br> NOW GO AND DO A CRIME</p>
+    </div>
+</div>
+
+
+{% endblock %}

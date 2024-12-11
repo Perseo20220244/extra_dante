@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %} 
+{% load widget_tweaks %}
+{% block title %}Registro{% endblock %} 
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="container rounded p-4 w-25 shadow-lg bg-white opacity-80">
+        <h2 class="text-center mb-4">F Society</h2>
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Nombre de Usuario</label>
+                {{ register_form.username|add_class:"form-control" }}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_password1" class="form-label">Contraseña</label>
+                {{ register_form.password1|add_class:"form-control" }}
+            </div>
+            
+            <div class="mb-3">
+                <label for="id_password2" class="form-label">Confirmar Contraseña</label>
+                {{ register_form.password2|add_class:"form-control" }}
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+        </form>
+        
+        <p class="text-center mt-3">¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión aquí</a></p>
+    </div>
+</div>
+{% endblock %}
